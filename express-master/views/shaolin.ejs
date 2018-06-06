@@ -1,0 +1,136 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>少林派</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.web/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href='http://fonts.useso.com/css?family=Kreon:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- start plugins -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var pull 		= $('#pull');
+            menu 		= $('nav ul');
+            menuHeight	= menu.height();
+            $(pull).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    <!----font-Awesome----->
+    <link rel="stylesheet" href="fonts/web/css/font-awesome.min.css">
+    <!----font-Awesome----->
+</head>
+<body>
+<div class="header_bg" id="home"><!-- start header -->
+    <div class="container">
+        <div class="row header text-center specials">
+            <div class="h_logo">
+                <a href="index.html"><img src="images/logo.png" alt="" class="responsive"/></a>
+            </div>
+            <nav class="top-nav">
+                <ul class="top-nav nav_list">
+                    <li><a href="portfolio.html">天下风云出我辈</a></li>
+                    <li class="page-scroll"><a href="index.html">一入江湖岁月催</a></li>
+                    <li class="logo page-scroll"><a title="hexa" href="index.html"><img src="images/logo.png" alt="" class="responsive"/></a></li>
+
+                    <li class="page-scroll"><a href="#contact">皇图霸业谈笑中</a></li>
+                    <li class="page-scroll"><a href="blog.html">不胜人生一场醉</a></li>
+                    <a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
+            </nav>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="blog"><!-- start main -->
+    <div class="container">
+        <div class="main row">
+            <h2 class="style">北崇少林</h2>
+            <div class="details row">
+                <div class="col-md-6">
+                    <img src="images/shaolin2.jpeg" alt="" class="img-responsive"/>
+                </div>
+                <div class="col-md-6">
+                    <p class="para">河南嵩山少林寺始建北魏，寺僧自古已有修练武艺的传统，以超脱生死的武道精神，参贯禅机。相传少林寺最基础锻鍊功法「易筋经」及「洗髓经」，乃是达摩祖师从天竺传来，并衍生出其他少林武技，实际不可考。少林武功自隋唐之间已负盛名，雄视武林近千年，对中原各派武术影响极深，故得「天下武宗」的称誉。</p>
+                    <p class="para">少林功夫内容丰富、套路繁多。按性质大致可分为内功、外功、硬功、轻功、气功等。内功以练精气为主；外功、硬功多指锻炼身体某一局部的猛力；轻功专练纵跳和超距；气功包括练气和养气。按技法又分拳术、棍术、枪术、刀术、剑术、技击散打、器械和器械对练等共一百多种。少林武术的要旨，传说当日达摩祖师见众憎坐禅，萎靡不振，难以入定，有碍佛法，细究其由，乃因躯体衰弱所致，于此悟到修习佛事必先强健体魄，因效鸟兽神态创立拳法，因此，少林武功的特点，首要之点即为调呼吸，练百骸，进退敏捷，刚柔兼济而尤以刚为主，以攻架为主，以长手为主，成为各类外家拳法之集大成者。</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <p class="para">少林武功博大精深、无人可以穷尽，是天下最大的武学宝库，不愧为武林第一大门派，因此在江湖上，少林派常常充当着“道义”的维护者、裁判者和领头羊的角色。如金庸《无龙八部》里的少林，天下武学之至境，在于少林；雁门关前攻袭辽人之带头大哥，出于少林，以慈悲佛法使王霸雄图、血海深恨尽归尘上，化解怨孽，在于少林。当然，有时少林也有忍让过分而导致贪嗅的情况，如《倚天屠龙记》圆真（成昆）之作恶江湖，便与少林之纵容大有关系，他们认为人心可化，而殊不知某些恶徒却是本性难移，等等。</p>
+            <div class="read_more">
+                <a href="index.html">返回主页</a>
+            </div>
+        </div>
+    </div>
+</div><!-- end main -->
+<div class="footer_bg" id="contact"><!-- start footer -->
+    <div class="container">
+        <div class="row footer">
+            <div class="col-md-8 contact_left">
+                <h3>get in touch</h3>
+                <p>In order to get in touch use the contact form below:</h4>
+                <form method="post" action="contact-post.html">
+                    <input type="text" value="Name (Required)" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+                    <input type="text" value="Email (Required)" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+                    <input type="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}">
+                    <textarea onfocus="if(this.value == 'Your Message here....') this.value='';" onblur="if(this.value == '') this.value='Your Message here....;" >Your Message here....</textarea>
+                    <span class="pull-right"><input type="submit" value="submit us"></span>
+                </form>
+            </div>
+            <div class="col-md-4  contact_right">
+                <p><span>Lorem Ipsum is simply dummy text: </span> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+                <ul class="list-unstyled address">
+                    <li><i class="fa fa-map-marker"></i><span>500 Lorem Ipsum Dolor Sit,</span></li>
+                    <li><i class="fa fa-phone"></i><span>(00) 222 666 444</span></li>
+                    <li><i class="fa fa-envelope"></i><a href="mailto:info@mycompany.com">info(at)mycompany.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer1_bg"><!-- start footer1 -->
+    <div class="container">
+        <div class="row  footer">
+            <div class="copy text-center">
+                <p class="link"><span>&#169; All rights reserved | More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></span></p>
+                <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $('a[href*=#]:not([href=#])').click(function() {
+                    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+        </script>
+        <!---- start-smoth-scrolling---->
+    </div>
+</div>
+</body>
+</html>

@@ -131,6 +131,39 @@ router.post('/write_config', function(req, res, next) {
     })
 });
 
+
+//提交表单接口
+router.post('/submit', function(req, res, next) {
+    //用户名、email、subject、info
+    var username = req.body.username;
+    var email = req.body.email;
+    var subject = req.body.subject;
+    var info = req.body.info;
+
+    sql = 'INSERT INTO register(username,email,subject,info) VALUES(?,?,?,?)';
+    var  addSqlParams = [username, email,subject,info];
+    connection.query(sql,addSqlParams, function(err, result) {
+        if(err){
+        console.log('[INSERT ERROR] - ',err.message);
+            return res.send({
+                status: 0,
+                info: '写入数据失败'
+            });
+        }        
+ 
+        console.log('--------------------------INSERT----------------------------');
+        //console.log('INSERT ID:',result.insertId);        
+        console.log('INSERT ID:',result);        
+        console.log('-----------------------------------------------------------------\n\n'); 
+                console.log('1');  
+        return res.send({
+            status: 1,
+            info: '数据写入成功'
+        });
+    });
+
+});
+
 //登录接口
 router.post('/login', function(req, res, next) {
     //用户名、密码、验证码
@@ -154,17 +187,21 @@ router.post('/login', function(req, res, next) {
         }
 
         console.log('--------------------------SELECT----------------------------');
-        console.log(result[0]);
-        console.log('------------------------------------------------------------\n\n');
-        for (var i = 0; i < result.length; i++)
+        for (var i = 0; i < result.length; i++){
+            console.log(result[0]);
             if (username === result[i].username && password === result[i].password) {
                 res.cookie('user', username);
                 return res.send({
                     status: 1
                 });
             }
+        }
+        console.log('------------------------------------------------------------\n\n');
+        return res.send({
+            status: 0,
+            info: '登录失败'
+        });
     });
-
 });
 
 //guid
