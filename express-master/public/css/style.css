@@ -364,7 +364,8 @@ nav a#pull {
 	text-decoration:none;
 	color:#2EB398;
 }
-.contact_left form input[type="submit"] {
+.contact_left form button[type="button"] {
+	border-radius: 4px;
 	font-family: 'open_sansregular';
 	-webkit-appearance: none;
 	cursor: pointer;
@@ -381,7 +382,7 @@ nav a#pull {
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
-.contact_left form input[type="submit"]:hover{
+.contact_left form button[type="button"]:hover{
 	background: #2B9C85;
 }
 /* start footer */

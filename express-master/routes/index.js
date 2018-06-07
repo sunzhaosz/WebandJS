@@ -25,9 +25,9 @@ router.get('/tuijian', function(req, res, next) {
 });
 
 router.get('/edit', function(req, res, next) {
-  if (!req.cookies.user) {
-    return res.render('login', {});
-  }
+  // if (!req.cookies.user) {
+  //   return res.render('login', {});
+  // }
   var type = req.query.type;
   if (type) {
     var obj = {};

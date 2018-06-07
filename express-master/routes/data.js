@@ -135,6 +135,12 @@ router.post('/write_config', function(req, res, next) {
 //提交表单接口
 router.post('/submit', function(req, res, next) {
     //用户名、email、subject、info
+    if (!req.cookies.user) {
+         return res.send({
+            status: 0,
+            info: '未登录'
+        }); 
+    }
     var username = req.body.username;
     var email = req.body.email;
     var subject = req.body.subject;
@@ -155,7 +161,6 @@ router.post('/submit', function(req, res, next) {
         //console.log('INSERT ID:',result.insertId);        
         console.log('INSERT ID:',result);        
         console.log('-----------------------------------------------------------------\n\n'); 
-                console.log('1');  
         return res.send({
             status: 1,
             info: '数据写入成功'
