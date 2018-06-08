@@ -152,7 +152,7 @@
 					 
 					      <!-- 模态框底部 -->
 					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+					        <button id="modal-button"type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
 					      </div>
 					 
 					    </div>
@@ -229,6 +229,12 @@
 							$("#ModalContent").html('提交成功');
 							window.location.reload();
 						} else {
+							if (data.info === "未登录") {
+								$("#modal-button").html("登陆");
+								$("#modal-button").on('click',function(){
+									window.location.href='/login';
+								});
+							}
 							$("#ModalContent").html(data.info);
 						}
 					},
