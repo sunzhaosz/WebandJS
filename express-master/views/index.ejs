@@ -133,10 +133,10 @@
 						<h3>加入门派</h3>
 						<h4>In order to get in touch use the contact form below:</h4>
 						<form id="submit" enctype="multipart/form-data" ,action="javascript:">
-							<input id="username" type="text" value="尊姓大名" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '尊姓大名';}">
-							<input id="email" type="text" value="飞鸽传书" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '飞鸽传书';}">
-							<input id="subject" type="text" value="心仪门派" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '心仪门派';}">
-							<textarea id="info" onFocus="if(this.value == '壮志豪言') this.value='';" onBlur="if(this.value == '') {this.value='留下点壮志豪言吧';}">留下点壮志豪言吧</textarea>
+							<input id="username" type="text" placeholder="*尊姓大名">
+							<input id="email" type="text" placeholder="*飞鸽传书">
+							<input id="subject" type="text" placeholder="*心仪门派">
+							<textarea id="info" placeholder='留下点壮志豪言吧'></textarea>
 							<span class="pull-right">
 					<button id="btn" type="button" data-toggle="modal" data-target="#myModal">即刻启程</button>
 					
@@ -147,7 +147,7 @@
 					 
 					      <!-- 模态框主体 -->
 					      <div id="ModalContent"class="modal-body">
-					        模态框内容..
+					        提交中
 					      </div>
 					 
 					      <!-- 模态框底部 -->
@@ -212,37 +212,47 @@
 				var email = $('#email').val();
 				var subject = $('#subject').val();
 				var info = $('#info').val();
-				var obj = {
-					username: username,
-					email: email,
-					subject: subject,
-					info: info
-				};
+				if (username === "" || email === "" || subject ==="" ) {
+					$("#ModalContent").html('请填写带*号的必填项');
+					$("#modal-button").on('click',function(){
+						setTimeout(function(){$("#ModalContent").html('提交中');},1000);
+					});
+				}
+				else{
+					var obj = {
+						username: username,
+						email: email,
+						subject: subject,
+						info: info
+					};
 
-				$.ajax({
-					type: 'POST',
-					url: '/data/submit',
-					data: obj,
-					success: function(data) {
-						console.log(data);
-						if(data.status) {
-							$("#ModalContent").html('提交成功');
-							window.location.reload();
-						} else {
-							if (data.info === "未登录") {
-								$("#modal-button").html("登陆");
+					$.ajax({
+						type: 'POST',
+						url: '/data/submit',
+						data: obj,
+						success: function(data) {
+							console.log(data);
+							if(data.status) {
+								$("#ModalContent").html('提交成功');
 								$("#modal-button").on('click',function(){
-									window.location.href='/login';
+										window.location.href='/';
 								});
+							} else {
+								if (data.info === "未登录") {
+									$("#modal-button").html("登录");
+									$("#modal-button").on('click',function(){
+										window.location.href='/login';
+									});
+								}
+								$("#ModalContent").html(data.info);
 							}
-							$("#ModalContent").html(data.info);
-						}
-					},
-					error: function() {
-						$("#ModalContent").html('提交失败');
-					},
-					dataType: 'json'
-				});
+						},
+						error: function() {
+							$("#ModalContent").html('提交失败');
+						},
+						dataType: 'json'
+					});
+				}
 			});
 		</script>
 		<script type="application/x-javascript">

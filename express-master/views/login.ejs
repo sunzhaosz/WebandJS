@@ -1,63 +1,149 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>后台管理</title>
-  <style type="text/css" rel="stylesheet">
-    html,body{width:100%;height:100%;margin:0;padding:0;font-family:"lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;}
-    .header{height:40px;width:100%;background-color:#242424;position:fixed;}
-    .header_title{line-height:40px;margin-left:60px;color:#fff;font-size:15px;}
-    .header_user{font-size:12px;margin-left:20px;color:#ccc;}
-    .panel{width:380px;height:500px;margin-left:auto;margin-right:auto;padding-top:100px;font-size:14px;}
-    a{text-decoration: none;color:#fff;}
-    .login_input>span{display: inline-block;width:50px;}
-    input{height:28px;line-height:28px;width:300px;border:1px solid #ddd; border-radius:4px;margin-left:5px;margin-bottom:10px;outline: none;padding-left:10px;}
-  </style>
-</head>
-<body>
-<div class="header">
-  <div class="header_title"><a href="/">后台管理系统</a></div>
-</div>
-<div class="panel">
-  <div class="login_input">
-    <span>用户名</span>
-    <input id="username" placeholder="请输入用户名"/>
-  </div>
-  <div class="login_input">
-    <span>密码</span>
-    <input id="password" type="password" placeholder="请输入密码"/>
-  </div>
-  <div id="btn"  style="background-color:#3C74F2;width:306px;height:32px;line-height:32px;text-align: center;color:#fff;border-radius:4px;margin-top:30px;margin-left:60px;">
-    登录
-  </div>
-</div>
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script type="text/javascript">
+<html lang="en">
 
-    $('#btn').on('click', function(){
-      var username = $('#username').val();
-      var password = $('#password').val();
-      var obj = {
-        username: username,
-        password: password
-      };
-      $.ajax({
-        type: 'POST',
-        url: '/data/login',
-        data: obj,
-        success: function(data){
-          console.log(data)
-          if(data.status){
-            window.location.href = '/';
-          }else{
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/form-elements.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Favicon and touch icons -->
+
+
+  </head>
+
+  <body>
+        <div class="top-content">
+          
+            <div class="inner-bg">
+                <div class="container">
+                    
+
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                          <div class="form-top">
+                            <div class="form-top-left">
+                              <h3>登录</h3>
+
+                            </div>
+                            <div class="form-top-right">
+                              <i class="fa fa-key"></i>
+                            </div>
+                            </div>
+                            <div class="form-bottom">
+                          <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                              <label class="sr-only" for="form-username">Username</label>
+                                <input type="text" name="form-username" placeholder="用户名" class="form-username form-control" id="username" >
+                              </div>
+                              <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="form-password" placeholder="密码" class="form-password form-control" id="password" >
+                              </div>
+                              <a class="btn btn-link-1 launch-modal" id="login" style="width: 200px">登录</a>
+                              <a class="btn btn-link-1 launch-modal" href="#" data-modal-id="modal-register" style="width: 200px">注册</a>
+                          </form>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+
+
+    </div>
+    <!-- MODAL -->
+    <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h3 class="modal-title" id="modal-register-label">注册</h3>
+
+          </div>
+
+          <div class="modal-body">
+
+            <form role="form" action="" method="post" class="registration-form">
+              <div class="form-group">
+                <label class="sr-only" for="form-first-name">用户名</label>
+                <input type="text" name="form-first-name" placeholder="用户名" class="form-first-name form-control" id="form-first-name">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="form-email">Email</label>
+                <input type="text" name="form-email" placeholder="Email" class="form-email form-control" id="form-email">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="form-password">密码</label>
+                <input type="text" name="form-password" placeholder="密码" class="form-email form-control" id="form-password">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="form-password2">再次输入密码</label>
+                <input type="text" name="form-password2" placeholder="再次输入密码" class="form-email form-control" id="form-password2">
+              </div>
+
+              <button type="submit" class="btn">完成</button>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.backstretch.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script type="text/javascript">
+      $('#login').on('click', function() {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var obj = {
+          username: username,
+          password: password
+        };
+        $.ajax({
+          type: 'POST',
+          url: '/data/login',
+          data: obj,
+          success: function(data) {
+            console.log(data)
+            if(data.status) {
+              window.location.href = '/';
+            } else {
+              alert('登录失败');
+            }
+          },
+          error: function() {
             alert('登录失败');
-          }
-        },
-        error: function(){
-          alert('登录失败');
-        },
-        dataType: 'json'
+          },
+          dataType: 'json'
+        });
       });
-    });
-</script>
-</body>
+    </script>
+    <!--[if lt IE 10]>
+              <script src="assets/js/placeholder.js"></script>
+          <![endif]-->
+
+  </body>
+
 </html>
