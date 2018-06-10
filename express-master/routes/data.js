@@ -169,6 +169,38 @@ router.post('/submit', function(req, res, next) {
 
 });
 
+
+
+//提交表单接口
+router.post('/register', function(req, res, next) {
+    //用户名、email、subject、info
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+
+    sql = 'INSERT INTO user(username,email,password) VALUES(?,?,?)';
+    var  addSqlParams = [username,email,password];
+    connection.query(sql,addSqlParams, function(err, result) {
+        if(err){
+        console.log('[INSERT ERROR] - ',err.message);
+            return res.send({
+                status: 0,
+                info: '注册失败'
+            });
+        }        
+ 
+        console.log('--------------------------INSERT----------------------------');
+        //console.log('INSERT ID:',result.insertId);        
+        console.log('INSERT ID:',result);        
+        console.log('-----------------------------------------------------------------\n\n'); 
+        return res.send({
+            status: 1,
+            info: '注册成功'
+        });
+    });
+
+});
+
 //登录接口
 router.post('/login', function(req, res, next) {
     //用户名、密码、验证码
