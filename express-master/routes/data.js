@@ -183,9 +183,12 @@ router.post('/register', function(req, res, next) {
     connection.query(sql,addSqlParams, function(err, result) {
         if(err){
         console.log('[INSERT ERROR] - ',err.message);
+        var info="注册失败"
+        if(/Duplicate entry/.test(err.message))
+            info = "用户名已被注册";
             return res.send({
                 status: 0,
-                info: '注册失败'
+                info: info
             });
         }        
  
