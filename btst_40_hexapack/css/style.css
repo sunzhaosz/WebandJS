@@ -4,7 +4,8 @@
 }
 body {
 	font-family: 'open_sansregular';
-	background:#ffffff;
+	/*background:#ffffff;*/
+    background-image:url(../images/bc.jpg);
 	font-size: 100%;
 }
 /* start header */
