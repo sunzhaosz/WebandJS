@@ -68,7 +68,7 @@
 					<div role="tabpanel" class="tab-pane active" id="sour">
 
 						<div class="data-div">
-							<div class="row tableHeader" id="listhead">
+							<div class="row tableHeader" >
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">
 									尊姓大名
 								</div>
@@ -82,24 +82,11 @@
 									门派回复
 								</div>
 							</div>
-							<div class="tablebody">
-								<div class="row">
-									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   levl3">
-										zzz
-									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4  levl3">
-										<span></span><span>zzz</span>
-									</div>
-									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-										15382327056@163.com
-									</div>
-									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
-										<!--<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">已同意</button>-->
-										<button class="btn btn-warning btn-xs" id ="huifu" ata-toggle="modal" data-target="#changeSource">审核中</button>
-										<!--<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">被拒绝</button>-->
-									</div>
-								</div>
+							<div class="tablebody" id="listhead">
+
+
 							</div>
+
 						</div>
 						<!--页码块-->
 						<footer class="footer">
@@ -188,31 +175,31 @@
 			            	for(var i = 0 ; i < obj.length ; i++){
 			            		switch(obj[i].flag){
 			            			case 0:
-			            				$('#listhead').after("<div class='tablebody'><div class='row'><div class='col-lg-1 col-md-1 col-sm-1 col-xs-1   levl3'>"
+			            				$('#listhead').append("<div class='row'><div class='col-lg-1 col-md-1 col-sm-1 col-xs-1   levl3'>"
 			            				+ obj[i].name +
 			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4  levl3'><span></span><span>"
 			            				+ obj[i].subject+
 			            				"</span></div><div class='col-lg-5 col-md-5 col-sm-5 col-xs-5'>"
 			            				+ obj[i].email+
-									    "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 '><button class='btn btn-warning btn-xs' id ='huifu' ata-toggle='modal' data-target='#changeSource'>审核中</button></div></div></div>");
+									    "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 '><button class='btn btn-warning btn-xs' id ='huifu' ata-toggle='modal' data-target='#changeSource'>审核中</button></div></div>");
 										break;
 									case 1:
-										$('#listhead').after("<div class='tablebody'><div class='row'><div class='col-lg-1 col-md-1 col-sm-1 col-xs-1   levl3'>"
+										$('#listhead').append("<div class='row'><div class='col-lg-1 col-md-1 col-sm-1 col-xs-1   levl3'>"
 			            				+ obj[i].name +
 			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4  levl3'><span></span><span>"
 			            				+ obj[i].subject+
 			            				"</span></div><div class='col-lg-5 col-md-5 col-sm-5 col-xs-5'>"
 			            				+ obj[i].email+
-									    "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 '><button class='btn btn-success btn-xs' data-toggle='modal' data-target='#changeSource'>已同意</button></div></div></div>");
+									    "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 '><button class='btn btn-success btn-xs' data-toggle='modal' data-target='#changeSource'>已同意</button></div></div>");
 										break;
 									case 2:
-										$('#listhead').after("<div class='tablebody'><div class='row'><div class='col-lg-1 col-md-1 col-sm-1 col-xs-1   levl3'>"
+										$('#listhead').append("<div class='row'><div class='col-lg-1 col-md-1 col-sm-1 col-xs-1   levl3'>"
 			            				+ obj[i].name +
 			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4  levl3'><span></span><span>"
 			            				+ obj[i].subject+
 			            				"</span></div><div class='col-lg-5 col-md-5 col-sm-5 col-xs-5'>"
 			            				+ obj[i].email+
-									    "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 '><button class='btn btn-danger btn-xs' id ='huifu' ata-toggle='modal' data-target='#changeSource'>被拒绝</button></div></div></div>");
+									    "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 '><button class='btn btn-danger btn-xs' id ='huifu' ata-toggle='modal' data-target='#changeSource'>被拒绝</button></div></div>");
 										break;
 			            		}
 			            	}

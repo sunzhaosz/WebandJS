@@ -68,7 +68,7 @@
 						<div class="check-div form-inline">
 						</div>
 						<div class="data-div">
-							<div class="row tableHeader" id="listhead">
+							<div class="row tableHeader" >
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
 									用户名
 								</div>
@@ -82,23 +82,8 @@
 									操作
 								</div>
 							</div>
-							<div class="tablebody">
-								<div class="row">
-									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2   levl3 username">
-										zzz
-									</div>
-									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  levl3 subject">
-										zzz
-									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 email">
-										15382327056@163.com
-									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#infoSource">查看留言</button>
-										<button class="btn btn-success btn-xs agreebutton" data-toggle="modal" data-target="#agreeSource">同意</button>
-										<button class="btn btn-danger btn-xs rejectbutton" data-toggle="modal" data-target="#rejectSource">拒绝</button>
-									</div>
-								</div>
+							<div class="tablebody" id="listhead">
+
 
 							</div>
 						</div>
@@ -144,41 +129,7 @@
 									</div>
 									<div class="modal-body">
 										<div class="container-fluid" id="info">
-											<!-- 											<form class="form-horizontal">
-												<div class="form-group ">
-													<label for="sName" class="col-xs-3 control-label">名称：</label>
-													<div class="col-xs-8 ">
-														<input type="email" class="form-control input-sm duiqi" id="sName" placeholder="">
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="sLink" class="col-xs-3 control-label">链接：</label>
-													<div class="col-xs-8 ">
-														<input type="" class="form-control input-sm duiqi" id="sLink" placeholder="">
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="sOrd" class="col-xs-3 control-label">排序：</label>
-													<div class="col-xs-8">
-														<input type="" class="form-control input-sm duiqi" id="sOrd" placeholder="">
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="sKnot" class="col-xs-3 control-label">父节点：</label>
-													<div class="col-xs-8">
-														<input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="">
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="exampleInput1" class="col-xs-3 control-label">资源类型：</label>
-													<div class="col-xs-8">
-														<label class="control-label" for="anniu">
-                                                            <input type="radio" name="leixing" id="anniu">菜单</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<label class="control-label" for="meun">
-                                                            <input type="radio" name="leixing" id="meun"> 按钮</label>
-													</div>
-												</div>
-											</form> -->
+											<!-- info -->
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -393,31 +344,31 @@
 			            	for(var i = 0 ; i < obj.length ; i++){
 			            		switch(obj[i].flag){
 			            			case 0:
-			            				$('#listhead').after("<div class='tablebody'><div class='row'><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 username levl3'>"
+			            				$('#listhead').append("<div class='row'><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 username levl3'>"
 			            				+ obj[i].name +
 			            				"</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 subject levl3'>"
 			            				+ obj[i].subject+
 			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 email'>"
 			            				+ obj[i].email+
-									    "</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 '><button class='btn btn-success btn-xs infobutton' data-toggle='modal' data-target='#infoSource'>查看留言</button><button class='btn btn-success btn-xs agreebutton' data-toggle='modal' >同意</button><button class='btn btn-danger btn-xs rejectbutton' data-toggle='modal' data-target='#rejectSource'>拒绝</button></div></div></div>");
+									    "</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 '><button class='btn btn-success btn-xs infobutton' data-toggle='modal' data-target='#infoSource'>查看留言</button><button class='btn btn-success btn-xs agreebutton' data-toggle='modal' >同意</button><button class='btn btn-danger btn-xs rejectbutton' data-toggle='modal' data-target=''>拒绝</button></div></div>");
 										break;
 									case 1:
-										$('#listhead').after("<div class='tablebody'><div class='row'><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 username levl3'>"
+										$('#listhead').append("<div class='row'><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 username levl3'>"
 			            				+ obj[i].name +
 			            				"</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 subject levl3'>"
 			            				+ obj[i].subject+
 			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 email'>"
 			            				+ obj[i].email+
-									    "</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 '><button class='btn btn-success btn-xs infobutton' data-toggle='modal' data-target='#infoSource'>查看留言</button><button class='btn btn-success btn-xs agreebutton' data-toggle='modal' data-target='' style='disabled:false'>已同意</button><button class='btn btn-danger btn-xs rejectbutton' data-toggle='modal' data-target='' style='disabled:false'>拒绝</button></div></div></div>");
+									    "</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 '><button class='btn btn-success btn-xs infobutton' data-toggle='modal' data-target='#infoSource'>查看留言</button><button class='btn btn-success btn-xs agreebutton' data-toggle='modal' data-target='' style='disabled:false'>已同意</button></div></div>");
 										break;
 									case 2:
-										$('#listhead').after("<div class='tablebody'><div class='row'><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 username levl3'>"
+										$('#listhead').append("<div class='row'><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 username levl3'>"
 			            				+ obj[i].name +
 			            				"</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 subject levl3'>"
 			            				+ obj[i].subject+
 			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 email'>"
 			            				+ obj[i].email+
-			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 '><button class='btn btn-success btn-xs infobutton' data-toggle='modal' data-target='#infoSource'>查看留言</button><button class='btn btn-success btn-xs agreebutton' data-toggle='modal' data-target='' style='disabled:false'>同意</button><button class='btn btn-danger btn-xs rejectbutton' data-toggle='modal' data-target='' style='disabled:false'>已拒绝</button></div></div></div>");
+			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 '><button class='btn btn-success btn-xs infobutton' data-toggle='modal' data-target='#infoSource'>查看留言</button><button class='btn btn-danger btn-xs rejectbutton' data-toggle='modal' data-target='' style='disabled:false'>已拒绝</button></div></div>");
 										break;
 			            		}
 			            	}
@@ -449,19 +400,23 @@
 			            	});
 
 			            	$('.agreebutton').on("click",function(){
+			            		var agreebutton = $(this);
+			            		var rejectbutton = $(this).parent().find("button:eq(2)");
 			              		var name = $(this).parent().parent().find("div:first-child").html();
                                 var subject =$(this).parent().parent().find("div:eq(1)").html();
 								var obj = {
 									name: name,
 									subject:subject
 								};
+
 								$.ajax({
 									type: 'POST',
 									url: '/data/submit_agree',
 									data: obj,
 									success: function(data) {
-										$(this).attr("disabled",false);
-										$(this).html("已同意");
+										agreebutton.attr("disabled",false);
+										rejectbutton.remove();
+										agreebutton.html("已同意");
 
 									},
 									error: function() {
@@ -471,6 +426,32 @@
 								});
 			            	});
 
+			            	$('.rejectbutton').on("click",function(){
+			            		var agreebutton  = $(this).parent().find("button:eq(1)");
+			            		var rejectbutton = $(this);
+			              		var name = $(this).parent().parent().find("div:first-child").html();
+                                var subject =$(this).parent().parent().find("div:eq(1)").html();
+								var obj = {
+									name: name,
+									subject:subject
+								};
+
+								$.ajax({
+									type: 'POST',
+									url: '/data/submit_reject',
+									data: obj,
+									success: function(data) {
+										agreebutton.remove();
+										rejectbutton.attr("disabled",false);
+										rejectbutton.html("已拒绝");
+
+									},
+									error: function() {
+
+									},
+									dataType: 'json'
+								});
+			            	});
 
 			            } else {
 
