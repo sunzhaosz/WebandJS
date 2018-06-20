@@ -127,7 +127,7 @@ router.post('/admin_query', function(req, res, next) {
 
 });
 
-//用户查询接口
+//信息查询接口
 router.post('/info_query', function(req, res, next) {
     // req.cookies.user
     var name = req.body.name;
@@ -152,6 +152,60 @@ router.post('/info_query', function(req, res, next) {
         return res.send({
             status: 1,
             info: info
+        });
+    });
+
+});
+
+router.post('/submit_agree', function(req, res, next) {
+    // req.cookies.user
+    var name = req.body.name;
+    var subject = req.body.subject;
+
+    sql = "update submit set check = ? where name = ? and subject = ?";
+    var SqlParams = [1,name, subject];
+    connection.query(sql,SqlParams,function(err, result) {
+        if (err) {
+            console.log('[SELECT ERROR] - ', err.message);
+            return res.send({
+                status: 0,
+                info: '更新失败'
+            });
+        }
+
+        console.log('--------------------------SELECT----------------------------');
+        console.log(result);
+        console.log('------------------------------------------------------------\n\n');
+        return res.send({
+            status: 1,
+            info: '更新成功'
+        });
+    });
+
+});
+
+router.post('/submit_reject', function(req, res, next) {
+    // req.cookies.user
+    var name = req.body.name;
+    var subject = req.body.subject;
+
+    sql = "update submit set check = ? where name = ? and subject = ?";
+    var SqlParams = [2,name, subject];
+    connection.query(sql,SqlParams,function(err, result) {
+        if (err) {
+            console.log('[SELECT ERROR] - ', err.message);
+            return res.send({
+                status: 0,
+                info: '更新失败'
+            });
+        }
+
+        console.log('--------------------------SELECT----------------------------');
+        console.log(result);
+        console.log('------------------------------------------------------------\n\n');
+        return res.send({
+            status: 1,
+            info: '更新成功'
         });
     });
 
