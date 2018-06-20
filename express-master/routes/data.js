@@ -29,7 +29,7 @@ router.post('/submit', function(req, res, next) {
     var subject = req.body.subject;
     var info = req.body.info;
 
-    sql = 'INSERT INTO submit(username,name,email,subject,info,check) VALUES(?,?,?,?,?,0)';
+    sql = 'INSERT INTO submit(username,name,email,subject,info,flag) VALUES(?,?,?,?,?,0)';
     var addSqlParams = [username, req.cookies.user, email, subject, info];
     connection.query(sql, addSqlParams, function(err, result) {
         if (err) {
@@ -77,7 +77,7 @@ router.post('/query', function(req, res, next) {
                 email: result[i].email,
                 subject: result[i].subject,
                 info: result[i].info,
-                check: result[i].check    
+                flag: result[i].flag    
             });
         }    
         console.log(result);
@@ -114,7 +114,7 @@ router.post('/admin_query', function(req, res, next) {
                 email: result[i].email,
                 subject: result[i].subject,
                 info: result[i].info,
-                check: result[i].check    
+                flag: result[i].flag    
             });
         }    
         console.log(result);
@@ -161,8 +161,9 @@ router.post('/submit_agree', function(req, res, next) {
     // req.cookies.user
     var name = req.body.name;
     var subject = req.body.subject;
-
-    sql = "update submit set check = ? where name = ? and subject = ?";
+    console.log(name);
+    console.log(subject);
+    sql = "update submit set flag = ? where name = ? and subject = ?";
     var SqlParams = [1,name, subject];
     connection.query(sql,SqlParams,function(err, result) {
         if (err) {
@@ -189,7 +190,7 @@ router.post('/submit_reject', function(req, res, next) {
     var name = req.body.name;
     var subject = req.body.subject;
 
-    sql = "update submit set check = ? where name = ? and subject = ?";
+    sql = "update submit set flag = ? where name = ? and subject = ?";
     var SqlParams = [2,name, subject];
     connection.query(sql,SqlParams,function(err, result) {
         if (err) {

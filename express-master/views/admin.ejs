@@ -391,7 +391,7 @@
 			            if (data.status) {
 			            	var obj = data.info;
 			            	for(var i = 0 ; i < obj.length ; i++){
-			            		switch(obj[i].check){
+			            		switch(obj[i].flag){
 			            			case 0:
 			            				$('#listhead').after("<div class='tablebody'><div class='row'><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 username levl3'>"
 			            				+ obj[i].name +
@@ -399,7 +399,7 @@
 			            				+ obj[i].subject+
 			            				"</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 email'>"
 			            				+ obj[i].email+
-									    "</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 '><button class='btn btn-success btn-xs infobutton' data-toggle='modal' data-target='#infoSource'>查看留言</button><button class='btn btn-success btn-xs agreebutton' data-toggle='modal' data-target='#agreeSource'>同意</button><button class='btn btn-danger btn-xs rejectbutton' data-toggle='modal' data-target='#rejectSource'>拒绝</button></div></div></div>");
+									    "</div><div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 '><button class='btn btn-success btn-xs infobutton' data-toggle='modal' data-target='#infoSource'>查看留言</button><button class='btn btn-success btn-xs agreebutton' data-toggle='modal' >同意</button><button class='btn btn-danger btn-xs rejectbutton' data-toggle='modal' data-target='#rejectSource'>拒绝</button></div></div></div>");
 										break;
 									case 1:
 										$('#listhead').after("<div class='tablebody'><div class='row'><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 username levl3'>"
@@ -424,7 +424,7 @@
 			            	$('.infobutton').on("click",function(){
 			            		var name = $(this).parent().parent().find("div:first-child").html();
                                 var subject =$(this).parent().parent().find("div:eq(1)").html();
-                                console.log(name);
+                                
       							var obj = {
 									name: name,
 									subject:subject
@@ -440,6 +440,29 @@
 										} else {
 
 										}
+									},
+									error: function() {
+
+									},
+									dataType: 'json'
+								});
+			            	});
+
+			            	$('.agreebutton').on("click",function(){
+			              		var name = $(this).parent().parent().find("div:first-child").html();
+                                var subject =$(this).parent().parent().find("div:eq(1)").html();
+								var obj = {
+									name: name,
+									subject:subject
+								};
+								$.ajax({
+									type: 'POST',
+									url: '/data/submit_agree',
+									data: obj,
+									success: function(data) {
+										$(this).attr("disabled",false);
+										$(this).html("已同意");
+
 									},
 									error: function() {
 
