@@ -10,11 +10,19 @@ router.get('/', function(req, res, next) {
     title: '首页'
   });
 });
+
 router.get('/index', function(req, res, next) {
   res.render('index', {
     title: '首页'
   });
 });
+
+router.get('/ranking', function(req, res, next) {
+  res.render('ranking', {
+    title: '排名'
+  });
+});
+
 
 router.get('/login', function(req, res, next) {
   res.clearCookie('user');

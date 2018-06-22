@@ -159,6 +159,39 @@ router.post('/user_query', function(req, res, next) {
 
 });
 
+//查询门派接口
+router.post('/subject_query', function(req, res, next) {
+
+    sql = "SELECT subjects.subject,chairman,COUNT(submit.`subject`) as amount from subjects LEFT JOIN submit on subjects.`subject` = submit.`subject` GROUP BY subjects.subject ORDER BY amount DESC";
+    connection.query(sql,function(err, result) {
+        if (err) {
+            console.log('[SELECT ERROR] - ', err.message);
+            return res.send({
+                status: 0,
+                info: '查询失败'
+            });
+        }
+        var subject = []
+        console.log('--------------------------SELECT----------------------------');
+        var obj = new Array();
+        for (var i = 0; i< result.length; i++) {
+                obj.push({
+                    rank: i+1,
+                    subject: result[i].subject,
+                    chairman: result[i].chairman,
+                    amount: result[i].amount
+                });
+        }    
+        console.log(result);
+        console.log('------------------------------------------------------------\n\n');
+        return res.send({
+            status: 1,
+            info: obj
+        });
+    });
+
+});
+
 
 //管理员查询接口
 router.post('/admin_query', function(req, res, next) {

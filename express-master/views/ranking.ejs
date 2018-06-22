@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>·ÉÑ©Á¬ÌìÉä°×Â¹£¬Ğ¦ÊéÉñÏÀÒĞ±ÌÔ§</title>
+    <title>é£é›ªè¿å¤©å°„ç™½é¹¿ï¼Œç¬‘ä¹¦ç¥ä¾ å€šç¢§é¸³</title>
 
 
     <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
@@ -25,16 +25,21 @@
     </style>
     <script>
         $(document).ready(function(){
+            $.ajax({
+                type: 'POST',
+                url: '/data/subject_query',
+                success: function(data) {
+                    if(data.status){
+                        for(var i =0 ;i < 8;i++)
+                            addDiv(data.info[i].rank,data.info[i].subject,data.info[i].chairman,data.info[i].amount);
+                    }
+                },
+                error: function() {
 
-            addDiv();
-            addDiv();
-            addDiv();
+                },
+                dataType: 'json'
+            });
         });
-
-
-
-
-
 
         $(function() {
             var pull 		= $('#pull');
@@ -52,24 +57,24 @@
             });
 
         });
-        function addDiv() {
+        function addDiv(rank,name,chairman,amount) {
             var div = document.createElement('div');
 
-            //ÉèÖÃdivµÄÊôĞÔ
+            //è®¾ç½®divçš„å±æ€§
             div.innerHTML = '\n' +
                 '        <div class="row">\n' +
-                '            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">\n' +
-                '                1\n' +
+                '            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">\n' +
+                '                '+rank+'\n' +
                 '            </div>\n' +
-                '            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">\n' +
-                '                »ªÉ½ÅÉ\n' +
+                '            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">\n' +
+                '                '+name+'\n' +
                 '            </div>\n' +
-                '            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">\n' +
-                '                ÔÀ²»Èº\n' +
+                '            <div class="col-lg-3 col-md-5 col-sm-5 col-xs-5">\n' +
+                '                '+chairman+'\n' +
                 '            </div>\n' +
                 '\n' +
-                '            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">\n' +
-                '                10086\n' +
+                '            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">\n' +
+                '                '+amount+'\n' +
                 '            </div>\n' +
                 '        </div>';
 
@@ -85,16 +90,16 @@
     <div class="container">
         <div class="row header text-center specials">
             <div class="h_logo">
-                <a href="index.html"><img src="images/logo.png" alt="" class="responsive"/></a>
+                <a href="/index"><img src="images/logo.png" alt="" class="responsive"/></a>
             </div>
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
-                    <li><a href="portfolio.html">ÌìÏÂ·çÔÆ³öÎÒ±²</a></li>
-                    <li class="page-scroll"><a href="index.html">Ò»Èë½­ºşËêÔÂ´ß</a></li>
-                    <li class="logo page-scroll"><a title="hexa" href="index.html"><img src="images/logo.png" alt="" class="responsive"/></a></li>
+                    <li><a href="/portfolio">å¤©ä¸‹é£äº‘å‡ºæˆ‘è¾ˆ</a></li>
+                    <li class="page-scroll"><a href="/index">ä¸€å…¥æ±Ÿæ¹–å²æœˆå‚¬</a></li>
+                    <li class="logo page-scroll"><a title="hexa" href="/index"><img src="images/logo.png" alt="" class="responsive"/></a></li>
 
-                    <li class="page-scroll"><a href="ranking.html">»ÊÍ¼°ÔÒµÌ¸Ğ¦ÖĞ</a></li>
-                    <li class="page-scroll"><a href="user.html">²»Ê¤ÈËÉúÒ»³¡×í</a></li>
+                    <li class="page-scroll"><a href="/ranking">çš‡å›¾éœ¸ä¸šè°ˆç¬‘ä¸­</a></li>
+                    <li class="page-scroll"><a href="/user">ä¸èƒœäººç”Ÿä¸€åœºé†‰</a></li>
                     <a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
             </nav>
             <div class="clearfix"></div>
@@ -104,17 +109,17 @@
 
 <div class="data-div">
     <div class="row tableHeader">
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">
-            ÃÅÅÉÅÅÃû
+        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
+            æ’å
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-            ÃûÃÅ´óÅÉ
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+            åé—¨å¤§æ´¾
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-            ÃÅÅÉÕÆÃÅ
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
+            é—¨æ´¾æŒé—¨
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-            ÃÅÖĞÈËÊı
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            é—¨ä¸­äººæ•°
         </div>
     </div>
 
@@ -124,68 +129,16 @@
               <!--1-->
             <!--</div>-->
             <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
-                <!--»ªÉ½ÅÉ-->
+                <!--åå±±æ´¾-->
             <!--</div>-->
             <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
-                <!--ÔÀ²»Èº-->
+                <!--å²³ä¸ç¾¤-->
             <!--</div>-->
 
             <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">-->
               <!--10086-->
             <!--</div>-->
         <!--</div>-->
-
-
-        <!--<div class="row">-->
-            <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">-->
-                <!--1-->
-            <!--</div>-->
-            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
-                <!--»ªÉ½ÅÉ-->
-            <!--</div>-->
-            <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
-                <!--ÔÀ²»Èº-->
-            <!--</div>-->
-
-            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">-->
-                <!--10086-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-        <!--<div class="row">-->
-            <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">-->
-                <!--1-->
-            <!--</div>-->
-            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
-                <!--»ªÉ½ÅÉ-->
-            <!--</div>-->
-            <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
-                <!--ÔÀ²»Èº-->
-            <!--</div>-->
-
-            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">-->
-                <!--10086-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-        <!--<div class="row">-->
-            <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">-->
-                <!--1-->
-            <!--</div>-->
-            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
-                <!--»ªÉ½ÅÉ-->
-            <!--</div>-->
-            <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
-                <!--ÔÀ²»Èº-->
-            <!--</div>-->
-
-            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">-->
-                <!--10086-->
-            <!--</div>-->
-        <!--</div>-->
-
 
 </div>
 
@@ -196,11 +149,11 @@
 
 
             <div class="col-md-4  contact_right">
-                <p><span>ÎÒÃÇÖ£ÖØ³ĞÅµ: </span> ÒÔÉÏÄÚÈİ´¿ÊôĞé¹¹</p>
+                <p><span>æˆ‘ä»¬éƒ‘é‡æ‰¿è¯º: </span> ä»¥ä¸Šå†…å®¹çº¯å±è™šæ„</p>
                 <ul class="list-unstyled address">
-                    <li><i class="fa fa-map-marker"></i><span>×ÊÁÏÀ´×Ô°Ù¶È</span></li>
+                    <li><i class="fa fa-map-marker"></i><span>èµ„æ–™æ¥è‡ªç™¾åº¦</span></li>
                     <li><i class="fa fa-phone"></i><span>(+86) 180 7279 0867</span></li>
-                    <li><i class="fa fa-envelope"></i><a href="mailto:info@mycompany.com">Õâ¸öÕæÃ»ÓĞÍøÕ¾</a></li>
+                    <li><i class="fa fa-envelope"></i><span>è¿™ä¸ªçœŸæ²¡æœ‰ç½‘ç«™</span></li>
                 </ul>
             </div>
 
@@ -211,7 +164,7 @@
     <div class="container">
         <div class="row  footer">
             <div class="copy text-center">
-                <p class="link"><span>&#169; All rights reserved | <a href="index.html" target="_blank" title="sz">SzAndZxh</a> - Collect from <a href="index.html" title="baidu" target="_blank">°Ù¶È</a></span></p>
+                <p class="link"><span>&#169; All rights reserved | <a  target="_blank" title="sz">SzAndZxh</a> - Collect from <a  title="baidu" target="_blank">ç™¾åº¦</a></span></p>
                 <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
             </div>
         </div>
