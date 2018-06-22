@@ -52,8 +52,42 @@ router.post('/submit', function(req, res, next) {
 
 });
 
+//密码修改接口
+router.post('/save', function(req, res, next) {
+    // req.cookies.user
+    var username = req.cookies.user;
+    var oldpwd = req.body.oldpwd;
+    var newpwd = req.body.newpwd;
+    console.log(username);
 
-//用户查询接口
+    sql = "update user set password = ? where username = ? and password = ?";
+    var SqlParams = [newpwd,username,oldpwd];
+    connection.query(sql, SqlParams,function(err, result) {
+        if (err) {
+            console.log('[UPDATE ERROR] - ', err.message);
+            return res.send({
+                status: 0,
+                info: '修改失败'
+            });
+        }
+
+        console.log('--------------------------UPDATE----------------------------');
+        if(result.affectedRows !== 1)
+            return res.send({
+                status: 0,
+                info: '密码错误'
+            });
+        console.log(result);
+        console.log('------------------------------------------------------------\n\n');
+        return res.send({
+            status: 1,
+            info: '修改成功'
+        });
+    });
+
+});
+
+//用户提交表单查询接口
 router.post('/query', function(req, res, next) {
     // req.cookies.user
     var username = req.cookies.user;
@@ -90,8 +124,43 @@ router.post('/query', function(req, res, next) {
 
 });
 
+//查询用户接口
+router.post('/user_query', function(req, res, next) {
+    // req.cookies.user
+    var admin = "admin";
 
-//用户查询接口
+    sql = "select * from user where username != ?";
+    var SqlParams = [admin];
+    connection.query(sql, SqlParams,function(err, result) {
+        if (err) {
+            console.log('[SELECT ERROR] - ', err.message);
+            return res.send({
+                status: 0,
+                info: '查询失败'
+            });
+        }
+
+        console.log('--------------------------SELECT----------------------------');
+        var obj = new Array();
+        for (var i = 0; i < result.length; i++) {
+            console.log(result[i].username);
+            obj.push({
+                username: result[i].username,
+                email: result[i].email, 
+            });
+        }    
+        console.log(result);
+        console.log('------------------------------------------------------------\n\n');
+        return res.send({
+            status: 1,
+            info: obj
+        });
+    });
+
+});
+
+
+//管理员查询接口
 router.post('/admin_query', function(req, res, next) {
     // req.cookies.user
     var username = req.cookies.user;
@@ -167,14 +236,14 @@ router.post('/submit_agree', function(req, res, next) {
     var SqlParams = [1,name, subject];
     connection.query(sql,SqlParams,function(err, result) {
         if (err) {
-            console.log('[SELECT ERROR] - ', err.message);
+            console.log('[UPDATE ERROR] - ', err.message);
             return res.send({
                 status: 0,
                 info: '更新失败'
             });
         }
 
-        console.log('--------------------------SELECT----------------------------');
+        console.log('--------------------------UPDATE----------------------------');
         console.log(result);
         console.log('------------------------------------------------------------\n\n');
         return res.send({
@@ -185,6 +254,35 @@ router.post('/submit_agree', function(req, res, next) {
 
 });
 
+//管理员删除用户接口
+router.post('/delete_user', function(req, res, next) {
+    // req.cookies.user
+    var username = req.body.username;
+    console.log(username)
+    sql = "DELETE FROM user WHERE username = ?";
+    var SqlParams = [username];
+    connection.query(sql,SqlParams,function(err, result) {
+        if (err) {
+            console.log('[DELETE ERROR] - ', err.message);
+            return res.send({
+                status: 0,
+                info: '更新失败'
+            });
+        }
+
+        console.log('--------------------------DELETE----------------------------');
+        console.log(result);
+        console.log('------------------------------------------------------------\n\n');
+        return res.send({
+            status: 1,
+            info: '更新成功'
+        });
+    });
+
+});
+
+
+//管理员审查接口
 router.post('/submit_reject', function(req, res, next) {
     // req.cookies.user
     var name = req.body.name;
@@ -194,14 +292,14 @@ router.post('/submit_reject', function(req, res, next) {
     var SqlParams = [2,name, subject];
     connection.query(sql,SqlParams,function(err, result) {
         if (err) {
-            console.log('[SELECT ERROR] - ', err.message);
+            console.log('[UPDATE ERROR] - ', err.message);
             return res.send({
                 status: 0,
                 info: '更新失败'
             });
         }
 
-        console.log('--------------------------SELECT----------------------------');
+        console.log('--------------------------UPDATE----------------------------');
         console.log(result);
         console.log('------------------------------------------------------------\n\n');
         return res.send({

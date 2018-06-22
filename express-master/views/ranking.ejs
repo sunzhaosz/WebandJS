@@ -1,0 +1,242 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>飞雪连天射白鹿，笑书神侠倚碧鸳</title>
+
+
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="js/bootstrap-select.js"></script>-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+
+    <style type="text/css">
+        body { background-color: #E2E2E2;
+            background-image: none;
+        }
+
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            addDiv();
+            addDiv();
+            addDiv();
+        });
+
+
+
+
+
+
+        $(function() {
+            var pull 		= $('#pull');
+            menu 		= $('nav ul');
+            menuHeight	= menu.height();
+            $(pull).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+
+        });
+        function addDiv() {
+            var div = document.createElement('div');
+
+            //设置div的属性
+            div.innerHTML = '\n' +
+                '        <div class="row">\n' +
+                '            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">\n' +
+                '                1\n' +
+                '            </div>\n' +
+                '            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">\n' +
+                '                华山派\n' +
+                '            </div>\n' +
+                '            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">\n' +
+                '                岳不群\n' +
+                '            </div>\n' +
+                '\n' +
+                '            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">\n' +
+                '                10086\n' +
+                '            </div>\n' +
+                '        </div>';
+
+
+            $('#add').append(div);
+        }
+
+    </script>
+
+</head>
+<body>
+<div class="header_bg" id="home"><!-- start header -->
+    <div class="container">
+        <div class="row header text-center specials">
+            <div class="h_logo">
+                <a href="index.html"><img src="images/logo.png" alt="" class="responsive"/></a>
+            </div>
+            <nav class="top-nav">
+                <ul class="top-nav nav_list">
+                    <li><a href="portfolio.html">天下风云出我辈</a></li>
+                    <li class="page-scroll"><a href="index.html">一入江湖岁月催</a></li>
+                    <li class="logo page-scroll"><a title="hexa" href="index.html"><img src="images/logo.png" alt="" class="responsive"/></a></li>
+
+                    <li class="page-scroll"><a href="ranking.html">皇图霸业谈笑中</a></li>
+                    <li class="page-scroll"><a href="user.html">不胜人生一场醉</a></li>
+                    <a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
+            </nav>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<div class="data-div">
+    <div class="row tableHeader">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">
+            门派排名
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+            名门大派
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            门派掌门
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            门中人数
+        </div>
+    </div>
+
+    <div class="tablebody "id="add">
+        <!--<div class="row">-->
+            <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">-->
+              <!--1-->
+            <!--</div>-->
+            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
+                <!--华山派-->
+            <!--</div>-->
+            <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
+                <!--岳不群-->
+            <!--</div>-->
+
+            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">-->
+              <!--10086-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="row">-->
+            <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">-->
+                <!--1-->
+            <!--</div>-->
+            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
+                <!--华山派-->
+            <!--</div>-->
+            <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
+                <!--岳不群-->
+            <!--</div>-->
+
+            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">-->
+                <!--10086-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="row">-->
+            <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">-->
+                <!--1-->
+            <!--</div>-->
+            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
+                <!--华山派-->
+            <!--</div>-->
+            <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
+                <!--岳不群-->
+            <!--</div>-->
+
+            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">-->
+                <!--10086-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="row">-->
+            <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   ">-->
+                <!--1-->
+            <!--</div>-->
+            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
+                <!--华山派-->
+            <!--</div>-->
+            <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
+                <!--岳不群-->
+            <!--</div>-->
+
+            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">-->
+                <!--10086-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+</div>
+
+
+
+<div class="footer_bg" id="contact">
+    <div class="container">
+
+
+            <div class="col-md-4  contact_right">
+                <p><span>我们郑重承诺: </span> 以上内容纯属虚构</p>
+                <ul class="list-unstyled address">
+                    <li><i class="fa fa-map-marker"></i><span>资料来自百度</span></li>
+                    <li><i class="fa fa-phone"></i><span>(+86) 180 7279 0867</span></li>
+                    <li><i class="fa fa-envelope"></i><a href="mailto:info@mycompany.com">这个真没有网站</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="footer1_bg">
+    <div class="container">
+        <div class="row  footer">
+            <div class="copy text-center">
+                <p class="link"><span>&#169; All rights reserved | <a href="index.html" target="_blank" title="sz">SzAndZxh</a> - Collect from <a href="index.html" title="baidu" target="_blank">百度</a></span></p>
+                <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $('a[href*=#]:not([href=#])').click(function() {
+                    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+        </script>
+
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</html>

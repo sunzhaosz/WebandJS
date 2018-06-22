@@ -49,7 +49,7 @@
 				</div>
 				<div id="personInfor">
 					<p>
-						<a>退出登录</a>
+						<a id="back">退出登录</a>
 					</p>
 				</div>
 				<div class="meun-item meun-item-active" href="#sour" aria-controls="sour" role="tab" data-toggle="tab"><img src="images/icon_source.png">资源管理</div>
@@ -214,9 +214,9 @@
 									操作
 								</div>
 							</div>
-							<div class="tablebody">
+							<div class="tablebody" id = "userlist">
 
-								<div class="row">
+<!-- 								<div class="row">
 									<div class="col-xs-4 ">
 										goodmoning
 									</div>
@@ -226,7 +226,7 @@
 									<div class="col-xs-2">
 										<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
 									</div>
-								</div>
+								</div> -->
 
 							</div>
 
@@ -247,7 +247,7 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-										<button type="button" class="btn  btn-xs btn-danger">保 存</button>
+										<button id = "delete" name="" type="button" class="btn  btn-xs btn-danger" data-dismiss="modal">保 存</button>
 									</div>
 								</div>
 								<!-- /.modal-content -->
@@ -290,35 +290,56 @@
 					</div>
 					<!-- 修改密码模块 -->
 					<div role="tabpanel" class="tab-pane" id="chan">
-						<div class="check-div">
-							原始密码为12312313
-						</div>
+
 						<div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
 							<form class="form-horizontal">
 								<div class="form-group">
-									<label for="sKnot" class="col-xs-4 control-label">原密码：</label>
+									<label for="sKnot" class="col-xs-4 control-label" >原密码：</label>
 									<div class="col-xs-5">
-										<input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+										<input id = "oldpwd" maxlength="100" type="password" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="sKnot" class="col-xs-4 control-label">新密码：</label>
+									<label for="sKnot" class="col-xs-4 control-label" >新密码：</label>
 									<div class="col-xs-5">
-										<input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+										<input id = "newpwd" maxlength="100" type="password" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="sKnot" class="col-xs-4 control-label">重复密码：</label>
+									<label for="sKnot" class="col-xs-4 control-label" >重复密码：</label>
 									<div class="col-xs-5">
-										<input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+										<input id = "newpwd2" maxlength="100" type="password" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
 									</div>
 								</div>
 								<div class="form-group text-right">
 									<div class="col-xs-offset-4 col-xs-5" style="margin-left: 169px;">
-										<button type="submit" class="btn btn-xs btn-green">保 存</button>
+										<button type="button" class="btn btn-xs btn-green" data-toggle='modal' data-target='#warning' id="save">保 存</button>
 									</div>
 								</div>
 							</form>
+							<!--查看提示弹出窗口-->
+							<div class="modal fade" id="warning" role="dialog" aria-labelledby="gridSystemModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+										</div>
+										<div class="modal-body">
+											<div class="container-fluid" id="warning_content">
+												<!-- info -->
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-xs btn-green" data-dismiss="modal">确定</button>
+										</div>
+									</div>
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+							<!-- /.modal -->
+
 						</div>
 
 					</div>
@@ -329,11 +350,93 @@
 		<script type="text/javascript">
 
 			$(document).ready(function() {
+				$("#logoP").on("click",function(){
+					window.location.href="/index";
+				});
+
 				$("#back").on("click",function(){
 					window.location.href="/login";
 				});
+				//密码修改
+				$("#save").on("click",function() {
+					var oldpwd = $("#oldpwd").val();
+					var newpwd = $("#newpwd").val();
+					var newpwd2 = $("#newpwd2").val();
+					var obj={
+						oldpwd: oldpwd,
+						newpwd: newpwd	
+					}
+					console.log(obj);
+					if(newpwd === '')
+						$("#warning_content").html("请输入新密码");
+					else if(newpwd !== newpwd2)
+						$("#warning_content").html("两次密码输入不一致");
+
+					else {
+						$.ajax({
+							type: 'POST',
+							url: '/data/save',
+							data: obj,
+							success: function(data) {
+								$("#warning_content").html(data.info);
+							},
+							error: function() {
+								$("#warning_content").html("修改失败");
+							},
+							dataType: 'json'
+						});
+					}
+				});
+
+				//用户管理列表刷新
+				$.ajax({
+					type: 'POST',
+					url: '/data/user_query',
+					success: function(data){
+						if(data.status){
+							var obj = data.info;
+							for(var i = 0 ; i < obj.length ; i++){
+								$("#userlist").append(
+									'<div class="row" id = "'+ obj[i].username+"_listitem" +'"><div class="col-xs-4 ">'
+									+ obj[i].username +
+									'</div><div class="col-xs-4">'
+									+ obj[i].email+
+									'</div><div class="col-xs-2"><button class="btn btn-danger btn-xs deleteUser" data-toggle="modal" data-target="#deleteUser">删除</button></div></div>');
+							}
+							$(".deleteUser").on("click",function() {
+								var name = $(this).parent().parent().find("div:first-child").html();
+								$("#delete").attr("name",name);
+							})
+						}
+					},
+			        error: function() {
+			            
+			        },
+			        dataType: 'json'
+				});
 
 
+				$("#delete").on("click",function(){
+					var name = $(this).attr("name");
+					var obj = {
+						username: name
+					}
+					$.ajax({
+						type: 'POST',
+						url: '/data/delete_user',
+						data: obj,
+						success: function(data) {
+							$("#"+name+"_listitem").remove();
+						},
+						error: function() {
+
+						},
+						dataType: 'json'
+					});		
+				})
+
+
+				//资源管理列表刷新
 			    $.ajax({
 			        type: 'POST',
 			        url: '/data/admin_query',
