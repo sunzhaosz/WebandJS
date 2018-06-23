@@ -24,13 +24,13 @@ router.post('/submit', function(req, res, next) {
             info: '未登录'
         });
     }
-    var username = req.body.username;
+    var name = req.body.username;
     var email = req.body.email;
     var subject = req.body.subject;
     var info = req.body.info;
 
     sql = 'INSERT INTO submit(username,name,email,subject,info,flag) VALUES(?,?,?,?,?,0)';
-    var addSqlParams = [username, req.cookies.user, email, subject, info];
+    var addSqlParams = [req.cookies.user, name, email, subject, info];
     connection.query(sql, addSqlParams, function(err, result) {
         if (err) {
             console.log('[INSERT ERROR] - ', err.message);
