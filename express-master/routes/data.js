@@ -72,6 +72,7 @@ router.post('/save', function(req, res, next) {
         }
 
         console.log('--------------------------UPDATE----------------------------');
+        console.log(result.affectedRows);
         if(result.affectedRows !== 1)
             return res.send({
                 status: 0,

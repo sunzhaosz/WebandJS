@@ -213,10 +213,10 @@
 							url: '/data/save',
 							data: obj,
 							success: function(data) {
-								$("#info").html("修改成功");
+								$("#info").html(data.info);
 							},
 							error: function() {
-								$("#info").html(data.info);
+								$("#info").html("修改失败");
 							},
 							dataType: 'json'
 							});
