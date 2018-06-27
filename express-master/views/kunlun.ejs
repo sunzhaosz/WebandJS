@@ -8,31 +8,10 @@
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.web/js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <link href='http://fonts.useso.com/css?family=Kreon:300,400,700' rel='stylesheet' type='text/css'>
+
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- start plugins -->
     <script src="/js/jquery-1.11.0.min.js"></script>
-    <script>
-        $(function() {
-            var pull        = $('#pull');
-            menu        = $('nav ul');
-            menuHeight  = menu.height();
-            $(pull).on('click', function(e) {
-                e.preventDefault();
-                menu.slideToggle();
-            });
-            $(window).resize(function(){
-                var w = $(window).width();
-                if(w > 320 && menu.is(':hidden')) {
-                    menu.removeAttr('style');
-                }
-            });
-        });
-    </script>
     <!----font-Awesome----->
     <link rel="stylesheet" href="fonts/web/css/font-awesome.min.css">
     <!----font-Awesome----->
@@ -87,7 +66,7 @@
             </div>
 
             <div class="read_more">
-                <a href="index.html">返回主页</a>
+                <a href="/portfolio">返回主页</a>
             </div>
         </div>
     </div>
